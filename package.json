@@ -16,6 +16,10 @@
       {
         "command": "open-file-on-git-remote.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "open-file-on-git-remote.openRemoteFile",
+        "title": "Open File on Git Remote"
       }
     ]
   },
