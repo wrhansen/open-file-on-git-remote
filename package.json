@@ -21,7 +21,18 @@
         "command": "open-file-on-git-remote.openRemoteFile",
         "title": "Open File on Git Remote"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Open File on Git Remote",
+      "properties": {
+        "open-file-on-git-remote.customUrl": {
+          "type": "string",
+          "default": null,
+          "description": "Custom URL to use for opening files on the remote repository. If not set, the extension will try to determine the remote URL from the git configuration."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
