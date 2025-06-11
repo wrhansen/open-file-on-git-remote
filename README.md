@@ -1,71 +1,69 @@
 # open-file-on-git-remote README
 
-This is the README for your extension "open-file-on-git-remote". After writing up a brief description, we recommend including the following sections.
+A simple command that allows you to open any file that is tracked in your remote
+repo in a web browser.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension supplies a single command called "Open File on Git Remote" that,
+when executed, opens the file that's currently active in the text editor in the
+git repository service's website. In the web browser, it will open the same file
+in the same branch that you have open in VSCode.
 
-For example if there is an image subfolder under your extension project workspace:
+The "Open File on Git Remote" command automatically supports opening any file
+in the following popular git repository services:
 
-\!\[feature X\]\(images/feature-x.png\)
+- https://github.com
+- https://bitbucket.org
+- https://gitlab.com
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### What if I use a custom git repository service?
+
+If your repo is not hosted on any of the popular services listed above, fear not,
+for you can use a setting called `open-file-on-git-remote.customUrl`. See
+[Extension Settings](#extension-settings) below.
+
+### Inspiration
+
+The inspiration behind this comes from all the times I've looked up code quickly
+in VSCode, and wanted to share a link to it to a colleague and had to then search
+for the same file in the web version of the repository. This removes that step
+and automatically opens the same file, on the same branch in the web browser
+based on the repo's git config settings.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+The file you're attemping to open should be tracked in a git repository and that
+repository should be hosted on a git repository service.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This extension contributes a single optional setting:
 
-For example:
+- `open-file-on-git-remote.customUrl`: custom web url to remote git repository service.
 
-This extension contributes the following settings:
+The `customUrl` setting should be set if your repo is not hosted on one of the
+popular services listed above. `customUrl` should be a url that is the shape
+of your service's Url structure for viewing a specific file on the site.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+In order to support `customUrl`s of any shape, there are a few supported variables
+that you can supply to your `customUrl`:
+
+- `${webUrl}`: Use the same web host url that is define in your .git/config file
+- `${branch}`: The current branch that you're currently working on
+- `${relativePath}`: The file path relative to the repo's root URI
+
+So, for example, github's `customUrl` would look something like this:
+`${webUrl}/blob/${branch}/${relativePath}`
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+N/A
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of open-file-on-git-remote extension
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**

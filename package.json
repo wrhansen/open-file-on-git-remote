@@ -14,10 +14,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "open-file-on-git-remote.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "open-file-on-git-remote.openRemoteFile",
         "title": "Open File on Git Remote"
       }
@@ -60,5 +56,9 @@
     "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrhansen/open-file-on-git-remote.git"
   }
 }
