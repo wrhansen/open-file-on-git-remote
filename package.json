@@ -60,5 +60,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wrhansen/open-file-on-git-remote.git"
-  }
+  },
+  "publisher": "WesleyHansen"
 }
