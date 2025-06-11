@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		outputChannel.appendLine('Number of repositories detected: ' + git.repositories.length);
 
-		// Improved: Find the repository for the current file using path.relative
+		// Find the repository for the current file using path.relative
 		const repo = git.repositories.find((r: { rootUri: { fsPath: string; }; }) => {
 			outputChannel.appendLine(`Checking repository: ${r.rootUri.fsPath}`);
 			const rel = path.relative(r.rootUri.fsPath, filePath);
@@ -82,9 +82,8 @@ export function activate(context: vscode.ExtensionContext) {
 			.replace(/^git@([^:]+):/, 'https://$1/')
 			.replace(/^https?:\/\/([^@]+@)?/, 'https://');
 
-		let url;
-		// if(webUrl.startsWith('https://github.com')) {
-		if(webUrl.startsWith('https://bitbub.com')) {
+		let url: string;
+		if(webUrl.startsWith('https://github.com')) {
 			url  = `${webUrl}/blob/${branch}/${relativePath}`;
 		} else if (webUrl.startsWith('https://bitbucket.org')) {
 			url  = `${webUrl}/src/${branch}/${relativePath}`;
