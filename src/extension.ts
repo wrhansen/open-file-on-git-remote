@@ -72,15 +72,18 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Get the current branch name
 		const branch = repo.state.HEAD?.name || 'main';
+		outputChannel.appendLine('branch: ' + branch);
 
 		// Get the relative path of the file in the repo
 		const relativePath = filePath.substring(repo.rootUri.fsPath.length + 1).replace(/\\/g, '/');
+		outputChannel.appendLine('relativePath: ' + relativePath);
 
 		// Convert remote URL to web URL (GitHub/GitLab/Bitbucket basic support)
 		let webUrl = gitRemoteUrl
 			.replace(/\.git$/, '')
 			.replace(/^git@([^:]+):/, 'https://$1/')
 			.replace(/^https?:\/\/([^@]+@)?/, 'https://');
+		outputChannel.appendLine('webUrl: ' + webUrl);
 
 		let url: string;
 		if(webUrl.startsWith('https://github.com')) {
@@ -113,9 +116,6 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.env.openExternal(vscode.Uri.parse(url));
 	});
 
-	outputChannel.show(true); // Optionally show the output channel
-
-	// context.subscriptions.push(disposable);
 	context.subscriptions.push(openFileOnGitRemote);
 }
 
