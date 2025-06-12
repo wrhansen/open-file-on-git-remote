@@ -28,6 +28,15 @@
           "description": "Custom URL to use for opening files on the remote repository. If not set, the extension will try to determine the remote URL from the git configuration."
         }
       }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "open-file-on-git-remote.openRemoteFile",
+          "when": "resourceLangId != ''",
+          "group": "navigation"
+        }
+      ]
     }
   },
   "scripts": {

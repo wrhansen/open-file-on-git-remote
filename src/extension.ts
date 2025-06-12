@@ -7,7 +7,6 @@ import * as path from 'path';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	const outputChannel = vscode.window.createOutputChannel('Open File on Git Remote');
-	outputChannel.show();
 	outputChannel.appendLine('open-file-on-git-remote extension activated'); // <--- Add this line
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
