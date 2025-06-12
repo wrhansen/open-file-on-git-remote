@@ -7,28 +7,23 @@ import * as path from 'path';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	const outputChannel = vscode.window.createOutputChannel('Open File on Git Remote');
-	outputChannel.appendLine('open-file-on-git-remote extension activated'); // <--- Add this line
+	outputChannel.appendLine('open-file-on-git-remote extension activated');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	outputChannel.appendLine('Congratulations, your extension "open-file-on-git-remote" is now active!');
-
-	// // The command has been defined in the package.json file
-	// // Now provide the implementation of the command with registerCommand
-	// // The commandId parameter must match the command field in package.json
-	const openFileOnGitRemote = vscode.commands.registerCommand('open-file-on-git-remote.openRemoteFile', async () => {
+	const openFileOnGitRemote = vscode.commands.registerCommand('open-file-on-git-remote.openRemoteFile', async (uri?: vscode.Uri) => {
 		outputChannel.appendLine('openRemoteFile command executed');
-		// Get the active text editor
-		const editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			outputChannel.appendLine('No active text editor found.');
-			vscode.window.showErrorMessage('No active text editor found.');
-			return;
-		}
 
-		// Get the document URI and file name
-		const document = editor.document;
-		const filePath = document.uri.fsPath;
+		// Determine the file URI: use the argument if provided (explorer), else active editor
+		let fileUri: vscode.Uri | undefined = uri;
+		if (!fileUri) {
+			const editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				outputChannel.appendLine('No active text editor found and no file selected.');
+				vscode.window.showErrorMessage('No active text editor found and no file selected.');
+				return;
+			}
+			fileUri = editor.document.uri;
+		}
+		const filePath = fileUri.fsPath;
 
 		// Get the Git extension API
 		const gitExtension = vscode.extensions.getExtension('vscode.git')?.exports;

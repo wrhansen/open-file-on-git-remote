@@ -2,7 +2,7 @@
   "name": "open-file-on-git-remote",
   "displayName": "open-file-on-git-remote",
   "description": "Simple command that allows you to open any file tracked in your repo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -34,6 +34,13 @@
         {
           "command": "open-file-on-git-remote.openRemoteFile",
           "when": "resourceLangId != ''",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "open-file-on-git-remote.openRemoteFile",
+          "when": "explorerResourceIsFolder == false && resourceLangId != ''",
           "group": "navigation"
         }
       ]
