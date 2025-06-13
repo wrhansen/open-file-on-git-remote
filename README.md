@@ -101,4 +101,8 @@ Initial release of open-file-on-git-remote extension
 Added command to right-click menu in the text editor and the file explorer.
 Also cleaned up code and added more logs to the OutputChannel
 
+### 0.0.3
+
+Readme updates & images
+
 ---
