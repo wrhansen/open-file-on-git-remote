@@ -3,12 +3,31 @@
 A simple command that allows you to open any file that is tracked in your remote
 repo in a web browser.
 
+This extension supports the following features:
+
+- [Open File On Git Remote -- Command Palette](#open-file-on-git-remote----command-palette)
+- [Open File on Git Remote -- Text Editor Context Menu](#open-file-on-git-remote----text-editor-context-menu)
+- [Open File on Git Remote -- File Explorer Context Menu](#open-file-on-git-remote----file-explorer-context-menu)
+
+## Inspiration
+
+The inspiration behind this comes from all the times I've looked up code quickly
+in VSCode, and wanted to share a link to it to a colleague and had to then search
+for the same file in the web version of the repository. This removes that step
+and automatically opens the same file, on the same branch in the web browser
+based on the repo's git config settings.
+
 ## Features
 
-This extension supplies a single command called "Open File on Git Remote" that,
-when executed, opens the file that's currently active in the text editor in the
-git repository service's website. In the web browser, it will open the same file
-in the same branch that you have open in VSCode.
+### Open File On Git Remote -- Command Palette
+
+![command palette screenshot](assets/command-palette.png)
+
+This extension supplies a command in the Command Palette called
+"Open File on Git Remote" that, when executed, opens the file that's currently
+active in the text editor in the git repository service's website. In the web
+browser, it will open the same file in the same branch that you have open in
+VSCode.
 
 The "Open File on Git Remote" command automatically supports opening any file
 in the following popular git repository services:
@@ -17,19 +36,27 @@ in the following popular git repository services:
 - https://bitbucket.org
 - https://gitlab.com
 
-### What if I use a custom git repository service?
+#### What if I use a custom git repository service?
 
 If your repo is not hosted on any of the popular services listed above, fear not,
 for you can use a setting called `open-file-on-git-remote.customUrl`. See
 [Extension Settings](#extension-settings) below.
 
-### Inspiration
+### Open File on Git Remote -- Text Editor Context Menu
 
-The inspiration behind this comes from all the times I've looked up code quickly
-in VSCode, and wanted to share a link to it to a colleague and had to then search
-for the same file in the web version of the repository. This removes that step
-and automatically opens the same file, on the same branch in the web browser
-based on the repo's git config settings.
+![text editor context menu screenshot](assets/text-editor.png)
+
+Additionally, you can access the "Open File on Git Remote" command from the
+context menu in an active text editor. To do this, simply right click on a text
+editor, and select the "Open File on Git Remote" command from the menu.
+
+### Open File on Git Remote -- File Explorer Context Menu
+
+![file explorer context menu screenshot](assets/file-explorer.png)
+
+Finally, you can access the "Open File on Git Remote" command from the
+context menu in the file explorer. To do this, simply right click on a file in
+file explorer, and select the "Open File on Git Remote" command from the menu.
 
 ## Requirements
 
@@ -55,6 +82,9 @@ that you can supply to your `customUrl`:
 
 So, for example, github's `customUrl` would look something like this:
 `${webUrl}/blob/${branch}/${relativePath}`
+
+**Pro Tip**: Use workspace-specific settings if your custom url can't make use of
+`${webUrl}` because typically that's where the project and repo name are located.
 
 ## Known Issues
 

@@ -2,7 +2,7 @@
   "name": "open-file-on-git-remote",
   "displayName": "open-file-on-git-remote",
   "description": "Simple command that allows you to open any file tracked in your repo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.100.0"
   },
