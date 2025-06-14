@@ -105,4 +105,8 @@ Also cleaned up code and added more logs to the OutputChannel
 
 Readme updates & images
 
+### 0.0.4
+
+Filled out the CHANGELOG.md & marketplace settings
+
 ---
